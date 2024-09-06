@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="coding2/brian.css"> 
+    <title>To My Husband</title>
+</head>
+<body>
+    <!-- First section for entering name -->
+    <div class="container" id="scurry">
+        <h2>For the Birthday Boy!</h2>
+        <input type="text" id="kthompson" placeholder="By inputting your name below, you're hereby consenting to kisses that's about to be given">
+        <button id="awiggins">Submit</button>   
+    </div>
+
+    <!-- Second section for confirmation -->
+    <div class="container" id="bpodziemski" style="display: none;">
+        <h2>Are you ready?</h2>
+        <button id="yesButton">Yes</button>
+        <div class="loading" id="loading"></div>
+        <div class="kanderson" id="kanderson"></div>
+    </div>
+
+    <!-- Hidden love letter section -->
+    <div id="love-letter" style="display: none;">
+        <h2>Love Letter</h2>
+        <div id="letter-content"></div>
+    </div>
+
+    <script>
+        // Function to display love letter
+        function showLoveLetter() {
+            document.getElementById("scurry").style.display = "none";
+            document.getElementById("bpodziemski").style.display = "none";
+            document.getElementById("love-letter").style.display = "block";
+
+            const loveLetterContent = `
+            Dear Brian,
+            
+            I know this took a while, longer than we both expected and I'm sorry. We went through a lot of things and I honestly can't express to you enough just how much I appreciate you staying with me for this long.
+            I know I'm hard to love sometimes, I get frustrated a lot and I often let my temper get the best of me so I'm very sorry about that but please know that I'm trying to be a better person and partner.
+            Someday baba I will go to therapy and I'll be healed, I'll be able to love you the way you deserve.
+
+            Today on your birthday we planned a lot of things, I'll probably show you this while we're eating kasi wala lang gusto ko makita reaction mo eh hehe
+
+            If you're reading this, it means you're the best man I have ever met and I will be proud to officially call you my boyfriend YIIIIEEEEE SINAGOT KO NA SIYA HAHAHAHAHA MWA MWAAAA
+
+            Siyempre baba diba sabi ko po na I didn't want our anniversary to be near a birthday? So after you read this, we can discuss possible dates po.
+
+            I love you so much, you mean the world to me and I truly wouldn't be here if it wasn't for you.
+
+            Your lavender,
+
+            Dion ♡
+            `;
+            typewriterEffect("letter-content", loveLetterContent);
+        }
+
+        // Typewriter effect function
+        function typewriterEffect(elementId, text) {
+            const speed = 50; // typing speed in milliseconds
+            let i = 0;
+
+            function type() {
+                if (i < text.length) {
+                    document.getElementById(elementId).innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+
+            type();
+        }
+
+        // Add event listeners
+        document.getElementById("awiggins").addEventListener("click", function() {
+            document.getElementById("bpodziemski").style.display = "block";
+            document.getElementById("scurry").style.display = "none";
+        });
+
+        document.getElementById("yesButton").addEventListener("click", showLoveLetter);
+    </script>
+</body>
+</html>
